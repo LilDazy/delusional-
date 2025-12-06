@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Delusional Love Story</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffe6f7, #e6f7ff);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        header img {
+            max-width: 300px;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #goAway {
+            font-size: 3em;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #ff69b4;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        #goAway:hover {
+            color: #ff1493;
+        }
+        #welcomeHeadline {
+            font-size: 2.5em;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #ff69b4;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            margin-top: 20px;
+        }
+        #welcomeHeadline.show {
+            opacity: 1;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: none;
+        }
+        #letters { display: none; }
+        #songs { display: none; }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 2em;
+            animation: float 6s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        .letter {
+            display: none;
+            margin-top: 10px;
+            font-style: italic;
+            border-left: 5px solid #ff69b4;
+            padding-left: 10px;
+        }
+        .letter img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+        .letter video {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+        button {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        button:hover {
+            background: #ff1493;
+        }
+        iframe {
+            width: 100%;
+            height: 352px;
+            border: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" loop hidden>
+        <source src="D:\c programming.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="hearts" id="hearts"></div>
+    <header>
+        <h1 id="goAway" onclick="startDelusion()">Hey! My love.</h1>
+        <h2 id="welcomeHeadline">You're my beginning, middle and end.</h2>
+        <img src="index.jpeg" alt="Our special photo">
+    </header>
+
+    <section id="letters">
+        <p>Dive into our epic tale. Click to reveal chapters.</p>
+        <button onclick="revealLetter(1)">Letter 1: Our Beginning.</button>
+        <div id="letter1" class="letter">
+            <p>Being with you feels like stepping into a world that finally makes sense.
+                 In the beginning, everything between us was sweet — gentle conversations, soft moments, and the kind of care that felt genuine.
+                  You put effort into every little thing, and it made me feel chosen in ways I wasn’t used to.
+                 It was simple, beautiful, and full of warmth.
+                </p>
+            <img src="beginning.jpeg" alt="Our first photo together">
+        </div>
+        <button onclick="revealLetter(2)">Letter 2: Middle.</button>
+        <div id="letter2" class="letter">
+            <p>Then came the middle, where love settled in and grew deeper.
+                 We had our small taunts, our teasing, our playful moments — all mixed with real love and understanding.
+                  We learned each other, supported each other, and built something that felt steady.
+                   It wasn’t perfect, but it was ours, and it was full of honesty, laughter, and the kind of love that makes everyday life feel lighter.
+            </p>
+            <video controls>
+                <source src="middle.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <button onclick="revealLetter(3)">Letter 3: The End.</button>
+        <div id="letter3" class="letter">
+            <p>And in the end, despite everything, we found our way to happiness.
+                 It didn’t fall apart — it grew. We ended with more love than we started with, more trust, more peace.
+                  Our story didn’t fade; it settled into something real and lasting.
+                   We ended happily, carrying all the sweetness, effort, love, and little moments that made us us.
+                </p>
+            <img src="end.jpeg" alt="Our last photo together">
+        </div>
+         <button onclick="showSongs()">Reveal the Soundtrack</button>
+    </section>
+
+    <section id="songs">
+        <h2>Soundtrack of Our Delusion</h2>
+        <p>The final layer: Songs that fuel our magical world.</p>
+        <p>Our Favorite Song:</p>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/71j40GUuIgwpEGmoupat2O?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <p>Our Playlist:</p>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1K6GIfEJt3BwHnMGY7FQef?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </section>
+
+    <footer id="footer">
+        <p>Made with delusional love by Sharu.
+              You've entered the bubble forever. 💖</p>
+    </footer>
+
+    <script>
+        // Floating hearts animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 6 + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 1000);
+
+        // Start delusion: Hide "Go Away", show headline and letters, and start music
+        function startDelusion() {
+            document.getElementById('goAway').style.display = 'none';
+            const headline = document.getElementById('welcomeHeadline');
+            headline.classList.add('show');
+            document.getElementById('letters').style.display = 'block';
+            // Start background music
+            const audio = document.getElementById('bgMusic');
+            audio.play().catch(e => console.log('Autoplay blocked or error:', e));
+        }
+
+        // Reveal letters
+        function revealLetter(num) {
+            const letter = document.getElementById('letter' + num);
+            letter.style.display = letter.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Show songs and footer
+        function showSongs() {
+            document.getElementById('songs').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
